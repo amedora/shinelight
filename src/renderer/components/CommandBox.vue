@@ -1,7 +1,7 @@
 <template>
   <div class="field has-addons">
     <p class="control">
-      <a class="button is-static">
+      <a class="commandbox-icon button is-static">
         :
       </a>
     </p>
@@ -16,3 +16,9 @@ export default {
   name: 'command-box'
 }
 </script>
+
+<style scoped>
+.commandbox-icon {
+  -webkit-app-region: drag;
+}
+</style>
