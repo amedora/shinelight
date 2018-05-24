@@ -5,7 +5,8 @@
         v-model="commandText"
         @input="commandTextChanged"
         @keyup.native.down="down"
-        @keyup.native.up="up" />
+        @keyup.native.up="up"
+        @keyup.native.enter="enter" />
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
@@ -60,11 +61,23 @@ export default {
       } else {
         this.isShown = true
       }
+    },
+    enter () {
+      if (this.selectedCommand) {
+        this.$emit('command-selected', this.selectedCommand)
+      }
     }
   },
   computed: {
     matches () {
       return this.commands.filter(e => e.includes(this.commandText))
+    },
+    selectedCommand () {
+      if (this.matches[this.highlightIndex]) {
+        return this.matches[this.highlightIndex]
+      } else {
+        return ''
+      }
     }
   }
 }

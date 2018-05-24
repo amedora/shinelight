@@ -6,12 +6,13 @@
       </a>
     </p>
     <div class="control">
-      <command-drop-down :commands="commands" />
+      <command-drop-down :commands="commands" @command-selected="launchCommand" />
     </div>
   </div>
 </template>
 
 <script>
+import { shell } from 'electron'
 import CommandDropDown from './CommandDropDown.vue'
 
 export default {
@@ -21,7 +22,12 @@ export default {
   },
   data () {
     return {
-      commands: ['aaa', 'bbb', 'acc']
+      commands: ['notepad.exe', 'c:\\home', 'acc']
+    }
+  },
+  methods: {
+    launchCommand (path) {
+      shell.openExternal(path)
     }
   }
 }
