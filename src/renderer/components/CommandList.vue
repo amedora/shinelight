@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a v-for="name in commands" :key="name" href="#" class="dropdown-item">
+    <a v-for="(name, index) in commands" :key="name" href="#" class="dropdown-item" :class="{ 'is-active': index === selectedIndex }">
       {{ name }}
     </a>
   </div>
@@ -9,6 +9,11 @@
 <script>
 export default {
   name: 'command-list',
-  props: ['commands']
+  props: ['commands'],
+  data () {
+    return {
+      selectedIndex: 0
+    }
+  }
 }
 </script>
