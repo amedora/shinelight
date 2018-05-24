@@ -5,9 +5,20 @@
 <script>
 export default {
   name: 'command-input',
-  data () {
-    return {
-      commandText: ''
+  props: {
+    value: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    commandText: {
+      get () {
+        return this.value
+      },
+      set (newValue) {
+        this.$emit('input', newValue)
+      }
     }
   }
 }

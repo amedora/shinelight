@@ -1,11 +1,11 @@
 <template>
   <div class="dropdown" :class="{ 'is-active': isShown }">
     <div class="dropdown-trigger" @click="toggle">
-      <command-input />
+      <command-input v-model="commandText" />
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
-        <command-list :commands="commands" />
+        <command-list :commands="matches" />
       </div>
     </div>
   </div>
@@ -24,12 +24,18 @@ export default {
   props: ['commands'],
   data () {
     return {
-      isShown: false
+      isShown: false,
+      commandText: ''
     }
   },
   methods: {
     toggle () {
       this.isShown = !this.isShown
+    }
+  },
+  computed: {
+    matches () {
+      return this.commands.filter(e => e.includes(this.commandText))
     }
   }
 }
