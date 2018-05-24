@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown" :class="{ 'is-active': isShown }">
     <div class="dropdown-trigger" @click="toggle">
-      <command-input
+      <commander-drop-down-input
         v-model="commandText"
         @input="commandTextChanged"
         @keyup.native.down="down"
@@ -10,21 +10,21 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
-        <command-list :commands="matches" :highlightIndex="highlightIndex" />
+        <commander-drop-down-list :commands="matches" :highlightIndex="highlightIndex" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CommandInput from './CommandInput.vue'
-import CommandList from './CommandList.vue'
+import CommanderDropDownInput from './CommanderDropDown/CommanderDropDownInput.vue'
+import CommanderDropDownList from './CommanderDropDown/CommanderDropDownList.vue'
 
 export default {
-  name: 'command-drop-down',
+  name: 'commander-drop-down',
   components: {
-    CommandInput,
-    CommandList
+    CommanderDropDownInput,
+    CommanderDropDownList
   },
   props: ['commands'],
   data () {

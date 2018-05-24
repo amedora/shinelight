@@ -1,24 +1,24 @@
 <template>
   <div class="field has-addons">
     <p class="control">
-      <a class="commandbox-icon button is-static">
+      <a class="commander-icon button is-static">
         :
       </a>
     </p>
     <div class="control">
-      <command-drop-down :commands="commands" @command-selected="launchCommand" />
+      <commander-drop-down :commands="commands" @command-selected="launchCommand" />
     </div>
   </div>
 </template>
 
 <script>
 import { shell } from 'electron'
-import CommandDropDown from './CommandDropDown.vue'
+import CommanderDropDown from './Commander/CommanderDropDown.vue'
 
 export default {
-  name: 'command-box',
+  name: 'commander',
   components: {
-    CommandDropDown
+    CommanderDropDown
   },
   data () {
     return {
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style scoped>
-.commandbox-icon {
+.commander-icon {
   -webkit-app-region: drag;
 }
 </style>

@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'command-box',
-      component: require('@/components/CommandBox').default
+      name: 'commander',
+      component: require('@/components/Commander').default
     },
     {
       path: '*',

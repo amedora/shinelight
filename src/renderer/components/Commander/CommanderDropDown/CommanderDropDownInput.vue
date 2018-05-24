@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'command-input',
+  name: 'commander-drop-down-input',
   props: {
     value: {
       type: String,

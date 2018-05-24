@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'command-list',
+  name: 'commander-drop-down-list',
   props: ['commands', 'highlightIndex']
 }
 </script>
