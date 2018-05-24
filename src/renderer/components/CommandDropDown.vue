@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown" :class="{ 'is-active': isShown }">
     <div class="dropdown-trigger" @click="toggle">
-      <command-input v-model="commandText" />
+      <command-input v-model="commandText" @input="commandTextChanged" />
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
@@ -31,6 +31,11 @@ export default {
   methods: {
     toggle () {
       this.isShown = !this.isShown
+    },
+    commandTextChanged () {
+      if (!this.isShown) {
+        this.isShown = true
+      }
     }
   },
   computed: {
