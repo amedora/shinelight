@@ -1,11 +1,15 @@
 <template>
   <div class="dropdown" :class="{ 'is-active': isShown }">
     <div class="dropdown-trigger" @click="toggle">
-      <command-input v-model="commandText" @input="commandTextChanged" />
+      <command-input
+        v-model="commandText"
+        @input="commandTextChanged"
+        @keyup.native.down="down"
+        @keyup.native.up="up" />
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
-        <command-list :commands="matches" />
+        <command-list :commands="matches" :highlightIndex="highlightIndex" />
       </div>
     </div>
   </div>
@@ -25,7 +29,8 @@ export default {
   data () {
     return {
       isShown: false,
-      commandText: ''
+      commandText: '',
+      highlightIndex: 0
     }
   },
   methods: {
@@ -33,7 +38,26 @@ export default {
       this.isShown = !this.isShown
     },
     commandTextChanged () {
+      this.highlightIndex = 0
       if (!this.isShown) {
+        this.isShown = true
+      }
+    },
+    down () {
+      if (this.isShown) {
+        if (this.highlightIndex < this.matches.length - 1) {
+          this.highlightIndex++
+        }
+      } else {
+        this.isShown = true
+      }
+    },
+    up () {
+      if (this.isShown) {
+        if (this.highlightIndex > 0) {
+          this.highlightIndex--
+        }
+      } else {
         this.isShown = true
       }
     }

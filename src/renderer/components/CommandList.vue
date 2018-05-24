@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a v-for="(name, index) in commands" :key="name" href="#" class="dropdown-item" :class="{ 'is-active': index === selectedIndex }">
+    <a
+      v-for="(name, index) in commands"
+      :key="name"
+      href="#"
+      class="dropdown-item"
+      :class="{ 'is-active': index === highlightIndex }">
       {{ name }}
     </a>
   </div>
@@ -9,11 +14,6 @@
 <script>
 export default {
   name: 'command-list',
-  props: ['commands'],
-  data () {
-    return {
-      selectedIndex: 0
-    }
-  }
+  props: ['commands', 'highlightIndex']
 }
 </script>
