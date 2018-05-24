@@ -21,10 +21,7 @@ export default {
   },
   data () {
     return {
-      commands: {
-        'aaa': 'aaa',
-        'bbb': 'bbb'
-      }
+      commands: ['aaa', 'bbb', 'acc']
     }
   }
 }

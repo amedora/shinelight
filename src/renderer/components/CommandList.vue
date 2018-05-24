@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a v-for="(key, name) in commands" :key="key" href="#" class="dropdown-item">
+    <a v-for="name in commands" :key="name" href="#" class="dropdown-item">
       {{ name }}
     </a>
   </div>
