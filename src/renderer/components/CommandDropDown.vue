@@ -1,21 +1,26 @@
 <template>
   <div class="dropdown" :class="{ 'is-active': isShown }">
     <div class="dropdown-trigger" @click="toggle">
-      <input class="input is-primary" type="text" aria-haspopup="true" aria-controls="dropdown-menu">
+      <command-input />
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
-        <a v-for="(key, name) in commands" :key="key" href="#" class="dropdown-item">
-          {{ name }}
-        </a>
+        <command-list :commands="commands" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import CommandInput from './CommandInput.vue'
+import CommandList from './CommandList.vue'
+
 export default {
   name: 'command-drop-down',
+  components: {
+    CommandInput,
+    CommandList
+  },
   props: ['commands'],
   data () {
     return {
