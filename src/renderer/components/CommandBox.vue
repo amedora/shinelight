@@ -5,15 +5,28 @@
         :
       </a>
     </p>
-    <p class="control">
-      <input class="input" type="text" placeholder="command">
-    </p>
+    <div class="control">
+      <command-drop-down :commands="commands" />
+    </div>
   </div>
 </template>
 
 <script>
+import CommandDropDown from './CommandDropDown.vue'
+
 export default {
-  name: 'command-box'
+  name: 'command-box',
+  components: {
+    CommandDropDown
+  },
+  data () {
+    return {
+      commands: {
+        'aaa': 'aaa',
+        'bbb': 'bbb'
+      }
+    }
+  }
 }
 </script>
 
