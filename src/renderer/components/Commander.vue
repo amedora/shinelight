@@ -6,13 +6,14 @@
       </a>
     </p>
     <div class="control">
-      <commander-drop-down :commands="commands" @command-selected="launchCommand" />
+      <commander-drop-down :commands="commandList" @command-selected="launchCommand" />
     </div>
   </div>
 </template>
 
 <script>
 import { shell } from 'electron'
+import { mapState } from 'vuex'
 import CommanderDropDown from './Commander/CommanderDropDown.vue'
 
 export default {
@@ -20,14 +21,14 @@ export default {
   components: {
     CommanderDropDown
   },
-  data () {
-    return {
-      commands: ['notepad.exe', 'c:\\home', 'acc']
-    }
+  computed: {
+    ...mapState('CommandList', {
+      commandList: 'commandList'
+    })
   },
   methods: {
-    launchCommand (path) {
-      shell.openExternal(path)
+    launchCommand (command) {
+      shell.openExternal(command.path)
     }
   }
 }
