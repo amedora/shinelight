@@ -27,8 +27,8 @@ export default {
     })
   },
   methods: {
-    launchCommand (path) {
-      shell.openExternal(path)
+    launchCommand (command) {
+      shell.openExternal(command.path)
     }
   }
 }

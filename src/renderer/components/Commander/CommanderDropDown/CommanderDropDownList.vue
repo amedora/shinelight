@@ -1,12 +1,12 @@
 <template>
   <div>
     <a
-      v-for="(name, index) in commands"
-      :key="name"
+      v-for="(command, index) in commands"
+      :key="command.name"
       href="#"
       class="dropdown-item"
       :class="{ 'is-active': index === highlightIndex }">
-      {{ name }}
+      {{ command.name }}
     </a>
   </div>
 </template>

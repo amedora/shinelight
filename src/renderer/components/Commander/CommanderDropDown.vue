@@ -70,7 +70,9 @@ export default {
   },
   computed: {
     matches () {
-      return this.commands.filter(e => e.includes(this.commandText))
+      return this.commands
+        .filter(e => e.name.includes(this.commandText))
+        .sort((a, b) => a.name > b.name)
     },
     selectedCommand () {
       if (this.matches[this.highlightIndex]) {
