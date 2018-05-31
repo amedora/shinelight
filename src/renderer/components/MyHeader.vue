@@ -14,6 +14,7 @@ export default {
 
 <style scoped>
 .navbar {
+  -webkit-app-region: drag;
   min-height: 32px;
   height: 32px;
 }
