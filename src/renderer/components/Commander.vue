@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="columns is-centered">
+    <div class="columns is-mobile is-centered">
       <div class="column is-half">
         <commander-input
           v-model="commandText"

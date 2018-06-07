@@ -5,7 +5,7 @@
       :key="command.name"
       class="box"
       :class="{ 'has-background-light': index === highlightIndex }">
-      <nav class="level">
+      <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
             <p>{{ command.name }}</p>
