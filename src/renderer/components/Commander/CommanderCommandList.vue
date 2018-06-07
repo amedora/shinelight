@@ -34,4 +34,11 @@ export default {
   max-height: 180px;
   overflow-y: auto;
 }
+.box {
+  padding: 9px;
+  border-radius: 3px;
+}
+.box:not(:last-child) {
+  margin-bottom: 8px;
+}
 </style>
