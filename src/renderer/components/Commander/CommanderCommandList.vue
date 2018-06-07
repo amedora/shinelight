@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="commander-command-list">
     <div
       v-for="(command, index) in commands"
       :key="command.name"
@@ -27,3 +27,11 @@ export default {
   props: ['commands', 'highlightIndex']
 }
 </script>
+
+<style scoped>
+.commander-command-list {
+  padding: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+</style>
