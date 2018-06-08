@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <commander />
+    <commander @new-file="onNewFile" />
   </div>
 </template>
 
@@ -9,6 +9,16 @@ import Commander from './Commander.vue'
 export default {
   components: {
     Commander
+  },
+  methods: {
+    onNewFile (filePath) {
+      this.$router.push({
+        name: 'newcommand',
+        params: {
+          filePath: filePath
+        }
+      })
+    }
   }
 }
 </script>
