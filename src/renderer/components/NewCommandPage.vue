@@ -11,6 +11,7 @@
       <div class="control">
         <input
           @keyup.enter="addCommand"
+          v-focus
           v-model="commandName"
           class="input is-small"
           type="text">
