@@ -12,7 +12,10 @@
     </div>
     <div class="columns">
       <div class="column">
-        <commander-command-list :commands="matches" :highlightIndex="highlightIndex" />
+        <commander-command-list
+          :commands="matches"
+          :highlightIndex="highlightIndex"
+          @new-file="$emit('new-file', $event)" />
       </div>
     </div>
   </div>

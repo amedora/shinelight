@@ -1,5 +1,5 @@
 <template>
-  <input v-model="commandText" class="input is-primary" type="text" aria-haspopup="true" aria-controls="dropdown-menu">
+  <input v-focus v-model="commandText" class="input is-primary" type="text" aria-haspopup="true" aria-controls="dropdown-menu">
 </template>
 
 <script>

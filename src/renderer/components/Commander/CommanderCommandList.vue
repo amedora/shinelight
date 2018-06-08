@@ -1,5 +1,9 @@
 <template>
-  <div class="commander-command-list">
+  <div
+    class="commander-command-list"
+    @dragover.prevent
+    @dragleave.prevent
+    @drop.prevent="onDrop">
     <div
       v-for="(command, index) in commands"
       :key="command.name"
@@ -24,7 +28,13 @@
 <script>
 export default {
   name: 'commander-command-list',
-  props: ['commands', 'highlightIndex']
+  props: ['commands', 'highlightIndex'],
+  methods: {
+    onDrop (event) {
+      const file = event.dataTransfer.files[0]
+      this.$emit('new-file', file.path)
+    }
+  }
 }
 </script>
 

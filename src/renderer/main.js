@@ -9,6 +9,12 @@ import 'bulma/css/bulma.css'
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
 
+Vue.directive('focus', {
+  inserted (el) {
+    el.focus()
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   components: { App },
