@@ -11,6 +11,12 @@ export default new Router({
       component: require('@/components/CommandPage').default
     },
     {
+      path: '/newcommand',
+      name: 'newcommand',
+      component: require('@/components/NewCommandPage').default,
+      props: true
+    },
+    {
       path: '*',
       redirect: '/'
     }
