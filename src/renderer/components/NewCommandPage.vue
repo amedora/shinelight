@@ -52,6 +52,7 @@ export default {
 
       this.$store.dispatch('CommandList/addCommand', command)
       this.$emit('command-added')
+      this.$router.push('/')
     }
   }
 }
