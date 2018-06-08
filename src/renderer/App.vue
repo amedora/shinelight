@@ -28,7 +28,7 @@ export default {
       initCommandList: 'init'
     }),
     loadCommands () {
-      const list = settings.get('command-list')
+      const list = settings.get('command-list') || []
       this.initCommandList(list)
     },
     saveCommands () {
