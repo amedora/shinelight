@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <my-header />
-    <router-view></router-view>
+    <router-view @command-added="saveCommands"></router-view>
   </div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
     loadCommands () {
       const list = settings.get('command-list')
       this.initCommandList(list)
+    },
+    saveCommands () {
+      const list = this.$store.state.CommandList.commandList
+      settings.set('command-list', list, { prettify: true })
     }
   }
 }
