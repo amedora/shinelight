@@ -9,12 +9,16 @@
     <div class="field">
       <label class="label is-small">コマンド名</label>
       <div class="control">
-        <input class="input is-small" type="text">
+        <input
+          @keyup.enter="addCommand"
+          v-model="commandName"
+          class="input is-small"
+          type="text">
       </div>
     </div>
     <div class="field is-grouped is-grouped-centered">
       <p class="control">
-        <a class="button is-small is-primary">
+        <a @click="addCommand" class="button is-small is-primary">
           登録
         </a>
       </p>
@@ -29,7 +33,26 @@
 
 <script>
 export default {
-  props: ['filePath']
+  props: ['filePath'],
+  data () {
+    return {
+      commandName: ''
+    }
+  },
+  methods: {
+    addCommand () {
+      if (!this.commandName) {
+        return
+      }
+
+      const command = {
+        name: this.commandName,
+        path: this.filePath
+      }
+
+      this.$store.dispatch('CommandList/addCommand', command)
+    }
+  }
 }
 </script>
 
