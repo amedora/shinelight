@@ -7,7 +7,7 @@ const mutations = {
     state.commandList = list
   },
   ADD_COMMAND (state, command) {
-    state.comandList.push(command)
+    state.commandList.push(command)
   }
 }
 
