@@ -40,6 +40,7 @@ export default {
     },
     deleteCommand () {
       this.$store.dispatch('CommandList/deleteCommand', this.command)
+      this.$emit('command-deleted')
       this.$emit('close')
     }
   }
