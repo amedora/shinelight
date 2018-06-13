@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <my-header />
-    <router-view @command-added="saveCommands"></router-view>
+    <router-view
+      @command-added="saveCommands"
+      @command-deleted="saveCommands" />
   </div>
 </template>
 

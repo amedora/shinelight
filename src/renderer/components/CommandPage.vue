@@ -6,7 +6,8 @@
     <modal-delete-command
       :show="showModal"
       :command="commandToDelete"
-      @close="showModal = false"/>
+      @close="showModal = false"
+      @command-deleted="$emit('command-deleted')" />
   </div>
 </template>
 
