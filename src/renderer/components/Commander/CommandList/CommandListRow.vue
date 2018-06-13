@@ -11,7 +11,7 @@
           <p class="is-size-7">{{ command.path }}</p>
         </div>
         <div class="level-item">
-          <a class="delete is-small"></a>
+          <a @click="$emit('delete-command', command)" class="delete is-small"></a>
         </div>
       </div>
     </nav>

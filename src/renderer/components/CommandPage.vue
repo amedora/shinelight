@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <commander @new-file="onNewFile" />
+    <commander
+      @delete-command="onDeleteCommand"
+      @new-file="onNewFile" />
   </div>
 </template>
 
@@ -11,6 +13,8 @@ export default {
     Commander
   },
   methods: {
+    onDeleteCommand (command) {
+    },
     onNewFile (filePath) {
       this.$router.push({
         name: 'newcommand',

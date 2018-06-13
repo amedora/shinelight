@@ -8,7 +8,8 @@
       v-for="(command, index) in commands"
       :class="{ 'has-background-light': index === highlightIndex }"
       :key="command.name"
-      :command="command" />
+      :command="command"
+      @delete-command="$emit('delete-command', $event)" />
   </div>
 </template>
 
