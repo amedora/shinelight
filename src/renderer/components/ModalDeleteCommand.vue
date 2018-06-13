@@ -12,7 +12,9 @@
         </div>
         <div class="level-right">
           <p class="level-item">
-            <a class="button is-small is-danger is-outlined">はい</a>
+            <a
+              class="button is-small is-danger is-outlined"
+              @click="deleteCommand">はい</a>
           </p>
           <p class="level-item">
             <a
@@ -34,7 +36,11 @@ export default {
   props: ['show', 'command'],
   methods: {
     close () {
-      this.show = false
+      this.$emit('close')
+    },
+    deleteCommand () {
+      this.$store.dispatch('CommandList/deleteCommand', this.command)
+      this.$emit('close')
     }
   }
 }
