@@ -15,7 +15,8 @@
         <commander-command-list
           :commands="matches"
           :highlightIndex="highlightIndex"
-          @new-file="$emit('new-file', $event)" />
+          @new-file="$emit('new-file', $event)"
+          @delete-command="$emit('delete-command', $event)" />
       </div>
     </div>
   </div>
