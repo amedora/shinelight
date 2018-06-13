@@ -33,4 +33,11 @@ export default {
 .box:not(:last-child) {
   margin-bottom: 8px;
 }
+.box .delete {
+  position: absolute;
+  display: none;
+}
+.box:hover .delete {
+  display: block;
+}
 </style>
