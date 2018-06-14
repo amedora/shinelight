@@ -8,7 +8,7 @@
       </div>
       <div class="level-right">
         <div class="level-item">
-          <p class="is-size-7">{{ command.path }}</p>
+          <p class="is-size-7 command-path">{{ command.path }}</p>
         </div>
         <div class="level-item">
           <a @click="$emit('delete-command', command)" class="delete is-small"></a>
@@ -39,5 +39,11 @@ export default {
 }
 .box:hover .delete {
   display: block;
+}
+.command-path {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
