@@ -42,7 +42,8 @@ export default {
 </script>
 
 <style>
-html {
-  overflow-y: hidden
+html::-webkit-scrollbar
+{
+  display: none;
 }
 </style>
