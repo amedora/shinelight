@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, Tray } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -33,12 +33,40 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
+  mainWindow.hide()
+  putIconOnTray()
+}
+
+let trayIcon
+function putIconOnTray () {
+  const iconPath = require('path').join(__static, 'icon.ico')
+  trayIcon = new Tray(iconPath)
+  const menu = Menu.buildFromTemplate([
+    {
+      label: '表示',
+      click () {
+        mainWindow.show()
+        mainWindow.focus()
+      }
+    },
+    {
+      label: '終了',
+      click () {
+        mainWindow.close()
+      }
+    }
+  ])
+  trayIcon.setContextMenu(menu)
 }
 
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    if (trayIcon) {
+      trayIcon.destroy()
+    }
     app.quit()
   }
 })
