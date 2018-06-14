@@ -34,7 +34,7 @@ export default {
   margin-bottom: 8px;
 }
 .box .delete {
-  position: absolute;
+  position: relative;
   display: none;
 }
 .box:hover .delete {
