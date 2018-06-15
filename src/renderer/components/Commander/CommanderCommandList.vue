@@ -35,6 +35,7 @@ export default {
 .commander-command-list {
   padding: 8px;
   max-height: 180px;
+  height: 180px;
   overflow-y: auto;
 }
 </style>
