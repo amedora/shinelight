@@ -6,7 +6,9 @@
     <div class="navbar-menu has-background-primary is-shadowless">
       <div class="navbar-end">
         <div class="navbar-item">
-          <a class="button is-inverted is-primary is-outlined is-small">_</a>
+          <a
+            @click="putInTray"
+            class="button is-inverted is-primary is-outlined is-small">_</a>
         </div>
       </div>
     </div>
@@ -14,8 +16,13 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron'
 export default {
-
+  methods: {
+    putInTray () {
+      ipcRenderer.send('put-in-tray')
+    }
+  }
 }
 </script>
 
@@ -54,6 +61,7 @@ export default {
   height: 30px;
 }
 .navbar-item .button {
+  -webkit-app-region: no-drag;
   height: 20px;
   width: 20px;
 }

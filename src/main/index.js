@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, Menu, Tray } from 'electron'
+import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -34,8 +34,12 @@ function createWindow () {
     mainWindow = null
   })
 
-  mainWindow.hide()
-  putIconOnTray()
+  mainWindow.on('minimize', () => {
+    mainWindow.hide()
+    putIconOnTray()
+  })
+
+  mainWindow.minimize()
 }
 
 let trayIcon
@@ -48,6 +52,9 @@ function putIconOnTray () {
       click () {
         mainWindow.show()
         mainWindow.focus()
+        if (trayIcon) {
+          trayIcon.destroy()
+        }
       }
     },
     {
@@ -75,4 +82,9 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+ipcMain.on('put-in-tray', (event) => {
+  mainWindow.hide()
+  putIconOnTray()
 })
