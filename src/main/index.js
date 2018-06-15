@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -25,7 +25,8 @@ function createWindow () {
     width: 600,
     transparent: false,
     frame: false,
-    resizable: false
+    resizable: false,
+    'skip-taskbar': true
   })
 
   mainWindow.loadURL(winURL)
@@ -33,12 +34,47 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
+  mainWindow.on('minimize', () => {
+    mainWindow.hide()
+    putIconOnTray()
+  })
+
+  mainWindow.minimize()
+}
+
+let trayIcon
+function putIconOnTray () {
+  const iconPath = require('path').join(__static, 'icon.ico')
+  trayIcon = new Tray(iconPath)
+  const menu = Menu.buildFromTemplate([
+    {
+      label: '表示',
+      click () {
+        mainWindow.show()
+        mainWindow.focus()
+        if (trayIcon) {
+          trayIcon.destroy()
+        }
+      }
+    },
+    {
+      label: '終了',
+      click () {
+        mainWindow.close()
+      }
+    }
+  ])
+  trayIcon.setContextMenu(menu)
 }
 
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    if (trayIcon) {
+      trayIcon.destroy()
+    }
     app.quit()
   }
 })
@@ -47,4 +83,9 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+ipcMain.on('put-in-tray', (event) => {
+  mainWindow.hide()
+  putIconOnTray()
 })
