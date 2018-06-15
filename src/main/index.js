@@ -25,7 +25,8 @@ function createWindow () {
     width: 600,
     transparent: false,
     frame: false,
-    resizable: false
+    resizable: false,
+    'skip-taskbar': true
   })
 
   mainWindow.loadURL(winURL)
