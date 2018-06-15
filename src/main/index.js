@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
+import { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -51,11 +51,7 @@ function putIconOnTray () {
     {
       label: '表示',
       click () {
-        mainWindow.show()
-        mainWindow.focus()
-        if (trayIcon) {
-          trayIcon.destroy()
-        }
+        popupApplication()
       }
     },
     {
@@ -68,7 +64,28 @@ function putIconOnTray () {
   trayIcon.setContextMenu(menu)
 }
 
-app.on('ready', createWindow)
+function popupApplication () {
+  mainWindow.show()
+  mainWindow.focus()
+  if (trayIcon) {
+    trayIcon.destroy()
+  }
+}
+
+function registerShortcut () {
+  globalShortcut.register('Super+Enter', () => {
+    popupApplication()
+  })
+}
+
+function unregisterShortcut () {
+  globalShortcut.unregisterAll()
+}
+
+app.on('ready', () => {
+  createWindow()
+  registerShortcut()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -83,6 +100,10 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+app.on('will-quit', () => {
+  unregisterShortcut()
 })
 
 ipcMain.on('put-in-tray', (event) => {
