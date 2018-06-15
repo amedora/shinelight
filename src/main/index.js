@@ -51,11 +51,7 @@ function putIconOnTray () {
     {
       label: '表示',
       click () {
-        mainWindow.show()
-        mainWindow.focus()
-        if (trayIcon) {
-          trayIcon.destroy()
-        }
+        popupApplication()
       }
     },
     {
@@ -66,6 +62,14 @@ function putIconOnTray () {
     }
   ])
   trayIcon.setContextMenu(menu)
+}
+
+function popupApplication () {
+  mainWindow.show()
+  mainWindow.focus()
+  if (trayIcon) {
+    trayIcon.destroy()
+  }
 }
 
 app.on('ready', createWindow)
