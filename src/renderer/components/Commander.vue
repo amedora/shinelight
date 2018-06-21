@@ -60,29 +60,18 @@ export default {
   methods: {
     commandTextChanged () {
       this.highlightIndex = 0
-      if (!this.isShown) {
-        this.isShown = true
-      }
     },
     launchCommand (command) {
       shell.openExternal(command.path)
     },
     down () {
-      if (this.isShown) {
-        if (this.highlightIndex < this.matches.length - 1) {
-          this.highlightIndex++
-        }
-      } else {
-        this.isShown = true
+      if (this.highlightIndex < this.matches.length - 1) {
+        this.highlightIndex++
       }
     },
     up () {
-      if (this.isShown) {
-        if (this.highlightIndex > 0) {
-          this.highlightIndex--
-        }
-      } else {
-        this.isShown = true
+      if (this.highlightIndex > 0) {
+        this.highlightIndex--
       }
     },
     enter () {
