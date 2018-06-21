@@ -58,11 +58,17 @@ export default {
     }
   },
   methods: {
+    clearInput () {
+      this.commandText = ''
+    },
     commandTextChanged () {
       this.highlightIndex = 0
     },
     launchCommand (command) {
-      shell.openExternal(command.path)
+      const isLaunched = shell.openExternal(command.path)
+      if (isLaunched) {
+        this.clearInput()
+      }
     },
     down () {
       if (this.highlightIndex < this.matches.length - 1) {
