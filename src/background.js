@@ -55,13 +55,13 @@ function putIconOnTray () {
   trayIcon = new Tray(iconPath)
   const menu = Menu.buildFromTemplate([
     {
-      label: 'è¡¨ç¤º',
+      label: '表示',
       click () {
         popupApplication()
       }
     },
     {
-      label: 'çµ‚äº†',
+      label: '終了',
       click () {
         win.close()
       }
