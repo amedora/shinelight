@@ -6,7 +6,6 @@ import store from './store'
 
 import 'bulma/css/bulma.css'
 
-if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
 
 Vue.directive('focus', {
