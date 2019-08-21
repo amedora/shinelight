@@ -1,12 +1,11 @@
 import Vue from 'vue'
 
-import App from './App'
+import App from './App.vue'
 import router from './router'
 import store from './store'
 
 import 'bulma/css/bulma.css'
 
-if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
 
 Vue.directive('focus', {
@@ -20,5 +19,5 @@ new Vue({
   components: { App },
   router,
   store,
-  template: '<App/>'
+  render: h => h(App)
 }).$mount('#app')
