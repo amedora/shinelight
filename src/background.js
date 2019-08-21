@@ -63,7 +63,7 @@ function putIconOnTray () {
     {
       label: 'çµ‚äº†',
       click () {
-        mainWindow.close()
+        win.close()
       }
     }
   ])
@@ -71,8 +71,8 @@ function putIconOnTray () {
 }
 
 function popupApplication () {
-  mainWindow.show()
-  mainWindow.focus()
+  win.show()
+  win.focus()
   if (trayIcon) {
     trayIcon.destroy()
   }
@@ -144,6 +144,6 @@ app.on('will-quit', () => {
 })
 
 ipcMain.on('put-in-tray', (event) => {
-  mainWindow.hide()
+  win.hide()
   putIconOnTray()
 })
