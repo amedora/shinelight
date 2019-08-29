@@ -1,5 +1,9 @@
 # shinelight
 
+Shinelight is a simple command launcher for Windows.
+
+![](shinelight.png)
+
 ## Project setup
 ```
 yarn install
